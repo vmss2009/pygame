@@ -11,15 +11,15 @@ windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT), 0, 32)
 pygame.display.set_caption('Animation')
 
 # set up direction variables
-DOWNLEFT = 1
-DOWNRIGHT = 3
-UPLEFT = 7
-UPRIGHT = 9
+DOWNLEFT = 'downleft'
+DOWNRIGHT = 'downright'
+UPLEFT = 'upleft'
+UPRIGHT = 'upright'
 
 MOVESPEED = 4
 
 # set up the colors
-BLACK = (0, 0, 0)
+WHITE = (255,255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
@@ -28,7 +28,7 @@ BLUE = (0, 0, 255)
 b1 = {'rect':pygame.Rect(300, 80, 50, 100), 'color':RED, 'dir':UPRIGHT}
 b2 = {'rect':pygame.Rect(200, 200, 20, 20), 'color':GREEN, 'dir':UPLEFT}
 b3 = {'rect':pygame.Rect(100, 150, 60, 60), 'color':BLUE, 'dir':DOWNLEFT}
-blocks = [b1, b2, b3]
+boxes = [b1, b2, b3]
 
 # run the game loop
 while True:
@@ -39,10 +39,10 @@ while True:
           sys.exit()
 
   # draw the black background onto the surface
-  windowSurface.fill(BLACK)
+  windowSurface.fill(WHITE)
 
-  for b in blocks:  
-      # move the block data structure
+  for b in boxes:  
+      # move the box data structure
       if b['dir'] == DOWNLEFT:
           b['rect'].left -= MOVESPEED
           b['rect'].top += MOVESPEED
@@ -85,5 +85,5 @@ while True:
       pygame.draw.rect(windowSurface, b['color'], b['rect'])
 
 # draw the window onto the screen
-pygame.display.update()
-time.sleep(0.02)
+  pygame.display.update()
+  time.sleep(0.02)
